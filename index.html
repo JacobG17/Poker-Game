@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Poker</title>
+	<title>POKER GAME</title>
     <link rel="stylesheet" href="style.css">
     <script src="funcion.js"></script>
 </head>
     <body>
+        <div class="titulo">
+            <h1>POKER GAME</h1>
+        </div>          
         <div id="contenedor">
             <div id="a">
-                <center><img id="ii1" src="1.jpeg"><br>
+                <center><img id="ii1" src="cropped-3.jpg"><br>
             </div>
             <div id="a">
-                <center><img id="ii2" src="2.jpeg"><br>
+                <center><img id="ii2" src="cropped-3.jpg"><br>
             </div>
             <div id="a">
-                <center><img id="ii3" src="3.jpeg"><br>
+                <center><img id="ii3" src="cropped-3.jpg"><br>
             </div>
             <div id="a">
-                <center><img id="ii4" src="4.jpeg"><br>
+                <center><img id="ii4" src="cropped-3.jpg"><br>
             </div>
             <div id="a">
-                <center><img id="ii5" src="5.jpeg"><br>
+                <center><img id="ii5" src="cropped-3.jpg"><br>
             </div>
         </div>
+        <div id = "checkboxes">
+            <input type="checkbox" id = "checkCarta1">
+            <input type="checkbox" id = "checkCarta2">
+            <input type="checkbox" id = "checkCarta3">
+            <input type="checkbox" id = "checkCarta4">
+            <input type="checkbox" id = "checkCarta5">
+        </div>
+
         <div id="cambio">
-            <button onclick="cambiacarta();">Cambiar mazo</button></center>
+            <button onclick="evaluarCheckbox();">Cambiar mazo</button></center>
         </div>
     </body>
 </html>
