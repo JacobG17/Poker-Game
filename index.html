@@ -6,24 +6,27 @@
     <script src="funcion.js"></script>
 </head>
     <body>
+        <div class ="apuesta">
+            <input type="number">
+        </div>
         <div class="titulo">
             <h1>POKER GAME</h1>
         </div>          
         <div id="contenedor">
-            <div id="a">
-                <center><img id="ii1" src="cropped-3.jpg"><br>
+            <div id="a" > 
+                <center><img id="ii1" class="carta" src="cropped-3.jpg" onclick="activarcheck(1)"><br>
             </div>
             <div id="a">
-                <center><img id="ii2" src="cropped-3.jpg"><br>
+                <center><img id="ii2" class="carta" src="cropped-3.jpg" onclick="activarcheck(2)"><br>
             </div>
             <div id="a">
-                <center><img id="ii3" src="cropped-3.jpg"><br>
+                <center><img id="ii3" class="carta" src="cropped-3.jpg" onclick="activarcheck(3)"><br>
             </div>
             <div id="a">
-                <center><img id="ii4" src="cropped-3.jpg"><br>
+                <center><img id="ii4" class="carta" src="cropped-3.jpg" onclick="activarcheck(4)"><br>
             </div>
             <div id="a">
-                <center><img id="ii5" src="cropped-3.jpg"><br>
+                <center><img id="ii5" class="carta" src="cropped-3.jpg" onclick="activarcheck(5)"><br>
             </div>
         </div>
         <div id = "checkboxes">
@@ -34,8 +37,9 @@
             <input type="checkbox" id = "checkCarta5">
         </div>
 
-        <div id="cambio">
-            <button onclick="evaluarCheckbox();">Cambiar mazo</button></center>
+        <div class = "botones-juego">
+            <button onclick="">JUGAR</button>        
+            <button onclick="CambiarMazo()">Cambio</button>        
         </div>
     </body>
 </html>
