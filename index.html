@@ -4,29 +4,32 @@
 	<title>POKER GAME</title>
     <link rel="stylesheet" href="style.css">
     <script src="funcion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert.js"></script>
 </head>
     <body>
         <div class ="apuesta">
-            <input type="number">
+            <label>Creditos</label>
+            <input id="money-input" readonly value="$ 100">
         </div>
         <div class="titulo">
             <h1>POKER GAME</h1>
         </div>          
         <div id="contenedor">
             <div id="a" > 
-                <center><img id="ii1" class="carta" src="cropped-3.jpg" onclick="activarcheck(1)"><br>
+                <center><img id="ii1" class="carta" src="trasera.jpg" onclick="activarcheck(1)"><br>
             </div>
             <div id="a">
-                <center><img id="ii2" class="carta" src="cropped-3.jpg" onclick="activarcheck(2)"><br>
+                <center><img id="ii2" class="carta" src="trasera.jpg" onclick="activarcheck(2)"><br>
             </div>
             <div id="a">
-                <center><img id="ii3" class="carta" src="cropped-3.jpg" onclick="activarcheck(3)"><br>
+                <center><img id="ii3" class="carta" src="trasera.jpg" onclick="activarcheck(3)"><br>
             </div>
             <div id="a">
-                <center><img id="ii4" class="carta" src="cropped-3.jpg" onclick="activarcheck(4)"><br>
+                <center><img id="ii4" class="carta" src="trasera.jpg" onclick="activarcheck(4)"><br>
             </div>
             <div id="a">
-                <center><img id="ii5" class="carta" src="cropped-3.jpg" onclick="activarcheck(5)"><br>
+                <center><img id="ii5" class="carta" src="trasera.jpg" onclick="activarcheck(5)"><br>
             </div>
         </div>
         <div id = "checkboxes">
@@ -38,8 +41,9 @@
         </div>
 
         <div class = "botones-juego">
-            <button onclick="EvaluarJugada()">JUGAR</button>        
-            <button onclick="CambiarMazo()">Cambio</button>        
+            <button id="Jugar" onclick="jugar()">JUGAR</button>     
+            <button id="Cambio" onclick="CambiarMazo()">CAMBIO</button>   
+            <button onclick="nuevaPartida()">NUEVA PARTIDA</button>
         </div>
     </body>
 </html>

@@ -1,3 +1,8 @@
+//Variable global para contar el numero de cambios realizados
+var contadorCambios = 0;
+//Timer para iniciar la funcion de voltear cartas despues de 3 segundos
+window.setTimeout(voltearCartas,3000);
+
 //Arreglo con imagenes
 var lista=[
 "Ac.jpg","2c.jpg","3c.jpg","4c.jpg","5c.jpg","6c.jpg","7c.jpg","8c.jpg","9c.jpg","Dc.jpg","Jc.jpg","Qc.jpg","Kc.jpg",
@@ -15,6 +20,24 @@ function numeroAleatorios(min,max)
 //Funcion para cambiar el mazo
 function CambiarMazo()
 {
+	let ganancia;
+	const input = document.getElementById('money-input').value;
+	let inputElement = parseFloat(input.replace(/[$,]/g, ''));
+	const valorInput = inputElement;
+	if(valorInput >= 10000)
+	{
+		resta = 1000;
+	}
+	else
+	{
+		resta = 10;
+	}
+
+	ganancia = valorInput-resta;
+	// volver a formatear el resultado como una cadena de moneda
+	let resultadoFormateado = '$ ' + ganancia.toLocaleString();
+	// actualizar el valor del input con el resultado
+	document.getElementById("money-input").value = resultadoFormateado;
 	// Obtener los estados de los checkboxes
 	const checkbox1 = document.getElementById("checkCarta1");
 	const checkbox2 = document.getElementById("checkCarta2");
@@ -25,18 +48,20 @@ function CambiarMazo()
 	// Verificar si todos los checkboxes están desactivados
 	if (!checkbox1.checked && !checkbox2.checked && !checkbox3.checked && !checkbox4.checked && !checkbox5.checked) {
 		// Cambiar todas las cartas
-		comprobar("ii1");
-		comprobar("ii2");
-		comprobar("ii3");
-		comprobar("ii4");
-		comprobar("ii5");
+		voltearCartas()
 	}
 	else
 	{
 		//LLamar esta funcion si algun checkbox esta activado
 		evaluarCheckbox() 
 	}
-	
+	contadorCambios++;
+	console.log(contadorCambios);
+	var boton = document.getElementById("Cambio");
+	if (contadorCambios => 1)
+	{
+		boton.disabled = true;
+	}
 }
 
 //Funcion para verificar el estado de los checkbox
@@ -105,8 +130,7 @@ function comprobar(contenedor)
 	  }
 }
 
-//Funcion que activa el checkbox al hacerle click sobre la imagen 
-//(sinceramente no entiendo como funciona sin llamarla en ningun lado pero funciona)
+//Funcion que activa el checkbox al hacerle click sobre la imagen de la carta
 function activarcheck(num)
 {
 	var imagen = document.getElementById("ii" + num);
@@ -123,8 +147,30 @@ function activarcheck(num)
 	}
 }
 
+//Funcion para Evaluar la Jugadas
 function EvaluarJugada()
 {
+	// Verifica qué tipo de mano es
+	contadorCambios = 0;
+	console.log(contadorCambios);
+	var boton = document.getElementById("Cambio");
+	boton.disabled = false;
+
+	let jugada;
+	let ganancia;
+	const input = document.getElementById('money-input').value;
+	let inputElement = parseFloat(input.replace(/[$,]/g, ''));
+	const valorInput = inputElement;
+
+	if(valorInput >= 10000)
+	{
+		resta = 1000;
+	}
+	else
+	{
+		resta = 10;
+	}
+
 	//Obtener todas las imágenes por su ID
 	var images = document.querySelectorAll("img");
 
@@ -176,36 +222,174 @@ function EvaluarJugada()
 	//Verifica la jugada Flor Imperial
 	if (esEscalera && esColor && valores[0] === 'D') 
 	{
-		console.log("Flor imerial")
+		jugada = "Flor imerial"
+		Ganaste(jugada)
+		ganancia = valorInput*20;
+
 	}
 	else if (esEscalera && esColor) {
-		console.log("Escalera de color")
+		jugada = "Escalera de color"
+		Ganaste(jugada)
+		ganancia = valorInput*15;
 	}
 	else if (esColor) {
-		console.log("Colorl")
+		jugada = "Color"
+		Ganaste(jugada)
+		ganancia = valorInput*5;
 	} 
 	else if (esEscalera == true) {
-		console.log("Escalera")
+		jugada = "Escalera"
+		Ganaste(jugada)
+		ganancia = valorInput*2;
 
 	} else if (valores[0] === valores[3] || valores[1] === valores[4]) {
-		console.log("Poker")
+		jugada = "Poker"
+		Ganaste(jugada)
+		ganancia = valorInput*9;
 	} 
 	else if ((valores[0] === valores[2] && valores[3] === valores[4]) || (valores[0] === valores[1] && valores[2] === valores[4])) {
-		console.log("Full House")
+		jugada = "Full House"
+		Ganaste(jugada)
+		ganancia = valorInput*7;
 	} 
 	else if (valores[0] === valores[2] || valores[1] === valores[3] || valores[2] === valores[4]) {
-		console.log("Tercia")
+		jugada = "Tercia"
+		Ganaste(jugada)
+		ganancia = valorInput*3;
 	} 
 	else if ((valores[0] === valores[1] && valores[2] === valores[3]) || (valores[0] === valores[1] && valores[3] === valores[4]) || (valores[1] === valores[2] && valores[3] === valores[4])) {
-		console.log("Dos pares")
+		jugada = "Dos pares"
+		Ganaste(jugada)
+		ganancia = valorInput*4;
 	} 
 	else if (valores[0] === valores[1] || valores[1] === valores[2] || valores[2] === valores[3] || valores[3] === valores[4]) {
-		console.log("Par")
+		jugada = "Par"
+		Ganaste(jugada)
+		ganancia = valorInput*2;
 	} 
 	else {
-		console.log("Carta Alta")
+		perdio = "Carta Alta"
+		Perdiste(perdio)
+		ganancia = valorInput-20;
 	}
+
+	if (jugada === "Carta Alta")
+	{
+		
+		// volver a formatear el resultado como una cadena de moneda
+		let resultadoFormateado = '$ ' + ganancia.toLocaleString();
+    
+		// actualizar el valor del input con el resultado
+		document.getElementById("money-input").value = resultadoFormateado;
+	}
+	else
+	{
+		// volver a formatear el resultado como una cadena de moneda
+		let resultadoFormateado = '$ ' + ganancia.toLocaleString();
+    
+		// actualizar el valor del input con el resultado
+		document.getElementById("money-input").value = resultadoFormateado;
+	}
+
+	window.setTimeout(voltearCartas,2500);
 
 }
 
+//Funcion de Alerta Ganadora
+function Ganaste(jugada)
+{
+	Swal.fire({
+		title: '!!Ganasteee!! 🤑',
+		text: 'Excelente jugada con ' + jugada, 
+		showConfirmButton: false,
+		timer: 2000
+	  })
+}
+//Funcion de Alerta Perdedora
+function Perdiste(perdio)
 
+{
+	Swal.fire({
+		Height:200,
+		Width:30,
+		title: '!Perdiste! 😭',
+		text: 'Perdiste por ' + perdio, 
+		text: '-20 creditos ',
+		showConfirmButton: false,
+		timer: 2000
+	  })
+}
+
+//Funcion de Alerta Te quedaste pobre
+function sinDinero()
+{
+	Swal.fire({
+		Icon:'error',
+		Height:200,
+		Width:30,
+		title: '!Te quedaste sin creditos! 🤧',
+		text: 'Ingresa mas para seguir jugando',
+		Intput: '', 
+		showConfirmButton: false,
+		timer: 2000
+	  })
+}
+
+function voltearCartas()
+{
+	comprobar("ii1");
+	comprobar("ii2");
+	comprobar("ii3");
+	comprobar("ii4");
+	comprobar("ii5");
+}
+//Funcion para comenzar a jugar
+function jugar()
+{
+	const game = document.getElementById("money-input").value;
+	//Se evalua el puntaje para saber si se puede seguir jugando
+	if (game == "$ 0")
+	{
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'Te quedaste sin creditos, vuelviendo a iniciar una nueva partida 😵!',
+		  })
+		reiniciarPagina(game);
+	}
+	else
+	{
+		EvaluarJugada();
+	}
+}
+
+//Funcion para Reiniciar la Partida
+function nuevaPartida()
+{
+	const game = document.getElementById("money-input").value;
+	Swal.fire({
+		title: 'Comenzando Nueva Partida...🤠',
+		text: '!Buena Suerte!',
+	  })
+	reiniciarPagina(game);
+}
+
+//Funcion para reiniciar la pagina
+function reiniciarPagina(game) {
+	let inputElement = parseFloat(game.replace(/[$,]/g, ''));
+	var valorInput = inputElement;
+	valorInput = 0;
+	ganancia = valorInput + 100;
+	// volver a formatear el resultado como una cadena de moneda
+	let resultadoFormateado = '$ ' + ganancia.toLocaleString();
+    
+	// actualizar el valor del input con el resultado
+	document.getElementById("money-input").value = resultadoFormateado;
+	
+	document.getElementById("ii1").src = "trasera.jpg";
+	document.getElementById("ii2").src = "trasera.jpg";
+	document.getElementById("ii3").src = "trasera.jpg";
+	document.getElementById("ii4").src = "trasera.jpg";
+	document.getElementById("ii5").src = "trasera.jpg";
+	window.setTimeout(voltearCartas,5000);
+}
