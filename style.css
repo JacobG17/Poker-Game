@@ -38,7 +38,7 @@ body{
     float:left; width:20%;height:30%;
 }
 
-#a img{
+img{
     height: 300px;width: 200px; align-self: center;
     border: 5px solid black;
     border-radius: 24px;
