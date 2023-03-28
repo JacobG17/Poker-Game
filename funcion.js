@@ -5,10 +5,10 @@ window.setTimeout(voltearCartas,3000);
 
 //Arreglo con imagenes
 var lista=[
-"Ac.jpg","2c.jpg","3c.jpg","4c.jpg","5c.jpg","6c.jpg","7c.jpg","8c.jpg","9c.jpg","Dc.jpg","Jc.jpg","Qc.jpg","Kc.jpg",
-"Ae.jpg","2e.jpg","3e.jpg","4e.jpg","5e.jpg","6e.jpg","7e.jpg","8e.jpg","9e.jpg","De.jpg","Je.jpg","Qe.jpg","Ke.jpg",
-"Ad.jpg","2d.jpg","3d.jpg","4d.jpg","5d.jpg","6d.jpg","7d.jpg","8d.jpg","9d.jpg","Dd.jpg","Jd.jpg","Qd.jpg","Kd.jpg",
-"At.jpg","2t.jpg","3t.jpg","4t.jpg","5t.jpg","6t.jpg","7t.jpg","8t.jpg","9t.jpg","Dt.jpg","Jt.jpg","Qt.jpg","Kt.jpg"
+"Cartas/Ac.jpg","Cartas/2c.jpg","Cartas/3c.jpg","Cartas/4c.jpg","Cartas/5c.jpg","Cartas/6c.jpg","Cartas/7c.jpg","Cartas/8c.jpg","Cartas/9c.jpg","Cartas/Dc.jpg","Cartas/Jc.jpg","Cartas/Qc.jpg","Cartas/Kc.jpg",
+"Cartas/Ae.jpg","Cartas/2e.jpg","Cartas/3e.jpg","Cartas/4e.jpg","Cartas/5e.jpg","Cartas/6e.jpg","Cartas/7e.jpg","Cartas/8e.jpg","Cartas/9e.jpg","Cartas/De.jpg","Cartas/Je.jpg","Cartas/Qe.jpg","Cartas/Ke.jpg",
+"Cartas/Ad.jpg","Cartas/2d.jpg","Cartas/3d.jpg","Cartas/4d.jpg","Cartas/5d.jpg","Cartas/6d.jpg","Cartas/7d.jpg","Cartas/8d.jpg","Cartas/9d.jpg","Cartas/Dd.jpg","Cartas/Jd.jpg","Cartas/Qd.jpg","Cartas/Kd.jpg",
+"Cartas/At.jpg","Cartas/2t.jpg","Cartas/3t.jpg","Cartas/4t.jpg","Cartas/5t.jpg","Cartas/6t.jpg","Cartas/7t.jpg","Cartas/8t.jpg","Cartas/9t.jpg","Cartas/Dt.jpg","Cartas/Jt.jpg","Cartas/Qt.jpg","Cartas/Kt.jpg"
 ];
 
 //Funcion para generar numeros aleatorios
@@ -386,10 +386,10 @@ function reiniciarPagina(game) {
 	// actualizar el valor del input con el resultado
 	document.getElementById("money-input").value = resultadoFormateado;
 	
-	document.getElementById("ii1").src = "trasera.jpg";
-	document.getElementById("ii2").src = "trasera.jpg";
-	document.getElementById("ii3").src = "trasera.jpg";
-	document.getElementById("ii4").src = "trasera.jpg";
-	document.getElementById("ii5").src = "trasera.jpg";
+	document.getElementById("ii1").src = "Cartas/trasera.jpg";
+	document.getElementById("ii2").src = "Cartas/trasera.jpg";
+	document.getElementById("ii3").src = "Cartas/trasera.jpg";
+	document.getElementById("ii4").src = "Cartas/trasera.jpg";
+	document.getElementById("ii5").src = "Cartas/trasera.jpg";
 	window.setTimeout(voltearCartas,5000);
 }
