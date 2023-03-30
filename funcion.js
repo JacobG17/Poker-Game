@@ -103,30 +103,22 @@ function comprobar(contenedor)
 	var carta5 = urlcarta5.split("/").pop();
 	//Generar nueva carta para cambiar
   	nuevacarta = lista[numeroAleatorios(0,50)]
-	//condiciones para que no se repita la carta
-	  if (nuevacarta == carta1)
+
+	//Evaluar para que no se repita la carta
+	  switch(nuevacarta)
 	  {
-		  comprobar(contenedor);
-	  }
-	  else if (nuevacarta == carta2)
-	  {
-		  comprobar(contenedor);
-	  }
-	  else if (nuevacarta == carta3)
-	  {
-		  comprobar(contenedor);
-	  }
-	  else if (nuevacarta == carta4)
-	  {
-		  comprobar(contenedor);
-	  }
-	  else if (nuevacarta == carta5)
-	  {
-		  comprobar(contenedor);
-	  }
-	  else
-	  {
-		document.getElementById(contenedor).src = nuevacarta
+		case 'carta1':
+			comprobar(contenedor);
+		case 'carta2':
+			comprobar(contenedor);
+		case 'carta3':
+			comprobar(contenedor);
+		case 'carta4':
+			comprobar(contenedor);
+		case 'carta5':
+			comprobar(contenedor);
+		default:
+			document.getElementById(contenedor).src = nuevacarta
 	  }
 }
 
